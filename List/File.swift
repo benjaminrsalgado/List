@@ -17,7 +17,8 @@ struct ContentView: View {
     let users = [
         User(name: "Max", role: "iOS Developer"),
         User(name: "Sofía", role: "UX Designer"),
-        User(name: "Carlos", role: "Backend Engineer")
+        User(name: "Carlos", role: "Backend Engineer"),
+        User(name: "Duval", role: "BOSS")
     ]
 
     var body: some View {

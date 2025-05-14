@@ -7,33 +7,26 @@
 
 import SwiftUI
 
-struct TaskListView: View {
-    let tasks = ["Do laundry", "Buy groceries", "Finish project"]
-    
+struct StyledDividerView: View {
     var body: some View {
-        List(tasks, id: \.self) { task in
-            HStack {
-                Text(task)
-                
-                Spacer()  // Empuja el botón a la derecha
-                
-                Button(action: {
-                    print("\(task) completed!")
-                }) {
-                    Image(systemName: "checkmark.circle")
-                        .foregroundColor(.green)
-                }
-            }
-            .padding(.vertical, 20)
+        VStack(spacing: 20) {
+            Text("Item 1")
+            Divider()
+                .frame(height: 2)
+                .background(Color.red)
+            Text("Item 2")
+            Divider()
+                .frame(height: 20)
+                .background(Color.blue)
+            Text("Item 3")
         }
-        
+        .padding()
     }
-
 }
 
 
 
 #Preview {
-    TaskListView()
+    StyledDividerView()
 }
 

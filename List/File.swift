@@ -7,32 +7,33 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    let developers = ["Max", "Sofía", "Carlos"]
-    let designers = ["Andrea", "Luis", "Valeria"]
-
+struct TaskListView: View {
+    let tasks = ["Do laundry", "Buy groceries", "Finish project"]
+    
     var body: some View {
-        List {
-            // Sección para desarrolladores
-            Section(header: Text("Developers")) {
-                ForEach(developers, id: \.self) { name in
-                    Text(name)
-                        .padding()
+        List(tasks, id: \.self) { task in
+            HStack {
+                Text(task)
+                
+                Spacer()  // Empuja el botón a la derecha
+                
+                Button(action: {
+                    print("\(task) completed!")
+                }) {
+                    Image(systemName: "checkmark.circle")
+                        .foregroundColor(.green)
                 }
             }
-
-            // Sección para diseñadores
-            Section(header: Text("Designers")) {
-                ForEach(designers, id: \.self) { name in
-                    Text(name)
-                        .padding()
-                }
-            }
+            .padding(.vertical, 20)
         }
+        
     }
+
 }
 
+
+
 #Preview {
-    ContentView()
+    TaskListView()
 }
 

@@ -7,30 +7,27 @@
 
 import SwiftUI
 
-struct User {
-    let id = UUID() // Identificador único para cada usuario
-    let name: String
-    let role: String
-}
-
 struct ContentView: View {
-    let users = [
-        User(name: "Max", role: "iOS Developer"),
-        User(name: "Sofía", role: "UX Designer"),
-        User(name: "Carlos", role: "Backend Engineer"),
-        User(name: "Duval", role: "BOSS")
-    ]
+    let developers = ["Max", "Sofía", "Carlos"]
+    let designers = ["Andrea", "Luis", "Valeria"]
 
     var body: some View {
-        List(users, id: \.id) { user in
-            VStack(alignment: .leading) {
-                Text(user.name)
-                    .font(.headline)
-                Text(user.role)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+        List {
+            // Sección para desarrolladores
+            Section(header: Text("Developers")) {
+                ForEach(developers, id: \.self) { name in
+                    Text(name)
+                        .padding()
+                }
             }
-            .padding()
+
+            // Sección para diseñadores
+            Section(header: Text("Designers")) {
+                ForEach(designers, id: \.self) { name in
+                    Text(name)
+                        .padding()
+                }
+            }
         }
     }
 }
